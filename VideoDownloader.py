@@ -27,7 +27,7 @@ def download():
     yt.set_filename(name) # Setting name of video
     video = yt.get('mp4', '360p') # This will download an mp4 format video of 360p resolution
     
-    print("\nDownloading...(Might take several minutes depending on size of video)")
+    print("\nDownloading " + name + "...(Might take several minutes)")
     video.download(path) # Downloading in the specified path
     print("Download completed")
 
