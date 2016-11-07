@@ -3,7 +3,7 @@ import urllib
 import lxml.html
 import pafy
 
-print("***YouTube Playlist Downloader***\n")
+print("***\nYouTube Playlist Downloader***\n")
 text_file = open("filePath.txt", "r+") # Opens the file "filePath.txt"
 text_line = text_file.read()
 if text_line == "":
@@ -20,26 +20,32 @@ flag = 'check'
 def download():
     videoID = link.split('=')[1] # Extracting the video id from url
     url = "http://www.youtube.com/watch?v=" + videoID   
-    yt = YouTube(url)
-    video = pafy.new(url)
-    name = video.title # Getting name of video
+    try:
+        yt = YouTube(url)
+        video = pafy.new(url)
+        name = video.title # Getting name of video
     
-    yt.set_filename(name) # Setting name of video
-    video = yt.get('mp4', '360p') # This will download an mp4 format video of 360p resolution
+        yt.set_filename(name) # Setting name of video
+        video = yt.get('mp4', '360p') # This will download an mp4 format video of 360p resolution
     
-    print("\nDownloading " + name + "...(Might take several minutes)")
-    video.download(path) # Downloading in the specified path
-    print("Download completed")
+        print("\nDownloading " + name + "...(Might take several minutes)")
+        video.download(path) # Downloading in the specified path
+        print("Download completed")
+    except:
+        print("Video could not be downloaded")
 
-connection = urllib.urlopen('http://www.youtube.com/playlist?list=' + playlist) # Creating aa connection object to the YouTube playlist
-dom = lxml.html.fromstring(connection.read()) # Reading the page in html format
+try:
+    connection = urllib.urlopen('http://www.youtube.com/playlist?list=' + playlist) # Creating aa connection object to the YouTube playlist
+    dom = lxml.html.fromstring(connection.read()) # Reading the page in html format
 
-for link in dom.xpath('//a/@href'): # checking for hyperlinks in the webpage
-    if 'watch?v=' in link and flag != link: # This will ensure only videos are downloaded. Also prevents duplication of videos
-        if chk > 2: # This is to prevent duplication of the first video. Without this, it will be downloaded thrice
-            download()
-            flag = link
+    for link in dom.xpath('//a/@href'): # checking for hyperlinks in the webpage
+        if 'watch?v=' in link and flag != link: # This will ensure only videos are downloaded. Also prevents duplication of videos
+            if chk > 2: # This is to prevent duplication of the first video. Without this, it will be downloaded thrice
+                download()
+                flag = link
+            else:
+                chk += 1
         else:
-            chk += 1
-    else:
-        flag = 'check'
+            flag = 'check'
+except:
+    print("\nCould not connect to the URL. Try again later")
