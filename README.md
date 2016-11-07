@@ -10,10 +10,8 @@ This is a Python program that downloads all YouTube videos in a user-specified p
         then type
         /home/user/Files/installationScript.sh  This will install the necessary modules required for running the  program
 
-3. Create a 'filePath.txt' file in the same location as the downloader's script. Keep it blank. This is necessary
+3. Run the program. On the first run, you will be required to specify the location where the videos are to be downloaded. This location will be used everytime you run the code in th future.
 
-4. Run the program. On the first run, you will be required to specify the location where the videos are to be downloaded. This location will be used everytime you run the code in th future.
+4. Paste the URL of the youtube playlist when prompted in the terminal screen.
 
-5. Paste the URL of the youtube playlist when prompted in the terminal screen.
-
-6. And you are done! Just don't quit the terminal until all videos have been downloaded, else the download will be stopped
+5. And you are done! Just don't quit the terminal until all videos have been downloaded, else the download will be stopped
