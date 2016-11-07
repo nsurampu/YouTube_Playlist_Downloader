@@ -2,7 +2,7 @@
 # this will install all the packages necessary for running this project
 
 touch filePath.txt
-pip install --upgrade pip #installs pip
+sudo pip install --upgrade pip #installs pip
 pip install --upgrade youtube-dl #installs youtube-dl
 pip install pytube #installs pytube
 pip install lxml #installs lxml
