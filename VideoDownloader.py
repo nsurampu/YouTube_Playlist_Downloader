@@ -3,7 +3,7 @@ import urllib
 import lxml.html
 import pafy
 
-print("***\nYouTube Playlist Downloader***\n")
+print("\n***YouTube Playlist Downloader***\n")
 text_file = open("filePath.txt", "r+") # Opens the file "filePath.txt"
 text_line = text_file.read()
 if text_line == "":
